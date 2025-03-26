@@ -5,6 +5,9 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
+  ToastAndroid,
+  Platform,
+  Alert,
 } from "react-native";
 import React from "react";
 import { router, useLocalSearchParams, Stack } from "expo-router";
@@ -12,6 +15,7 @@ import { useFetch } from "@/services/useFetch";
 import { fetchMovieDetails } from "@/services/api";
 import { icons } from "@/constants/icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useSavedMovies } from "@/context/SavedMoviesContext";
 
 interface MovieInfoProps {
   label: string;
@@ -29,10 +33,33 @@ const MovieInfo = ({ label, value }: MovieInfoProps) => (
 
 export default function MovieDetails() {
   const { id } = useLocalSearchParams();
+  const { saveMovie, removeMovie, isMovieSaved } = useSavedMovies();
 
   const { data: movie, loading } = useFetch(() =>
     fetchMovieDetails(id as string)
   );
+
+  const isSaved = movie?.id ? isMovieSaved(movie?.id) : false;
+
+  const showToast = (message: string) => {
+    if (Platform.OS === "android") {
+      ToastAndroid.show(message, ToastAndroid.SHORT);
+    } else {
+      Alert.alert(message);
+    }
+  };
+
+  const toggleSave = async () => {
+    if (!movie) return;
+
+    if (isSaved) {
+      await removeMovie(movie.id);
+      showToast(`${movie?.title} removed from saved movies.`);
+    } else {
+      await saveMovie(movie);
+      showToast(`${movie?.title} saved to saved movies.`);
+    }
+  };
 
   if (loading)
     return (
@@ -52,6 +79,19 @@ export default function MovieDetails() {
             className="w-full h-[550px]"
             resizeMode="stretch"
           />
+          <View className="absolute bottom-5 right-20 flex-row">
+            <TouchableOpacity
+              onPress={toggleSave}
+              className="  rounded-full size-14 bg-white flex items-center justify-center"
+            >
+              <Image
+                source={icons.save}
+                tintColor={isSaved ? "#FF5757" : "#000"}
+                className="w-6 h-7 ml-0.5"
+                resizeMode="stretch"
+              />
+            </TouchableOpacity>
+          </View>
 
           <TouchableOpacity className="absolute bottom-5 right-5 rounded-full size-14 bg-white flex items-center justify-center">
             <Image

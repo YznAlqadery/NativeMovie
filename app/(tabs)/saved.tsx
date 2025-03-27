@@ -5,7 +5,7 @@ import { router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SavedMovieCard from "@/components/SavedMovieCard";
 
-export default function SavedScreen() {
+export default function Saved() {
   const { savedMovies, removeMovie } = useSavedMovies();
 
   return (

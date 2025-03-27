@@ -2,25 +2,20 @@ import { Stack } from "expo-router";
 import "./globals.css";
 import { StatusBar } from "react-native";
 import { SavedMoviesProvider } from "../context/SavedMoviesContext";
+import { AuthProvider } from "../context/AuthContext";
 
 export default function RootLayout() {
   return (
-    <SavedMoviesProvider>
+    <AuthProvider>
       <StatusBar hidden={true} />
-      <Stack>
-        <Stack.Screen
-          name="(tabs)"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="movies/[id]"
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack>
-    </SavedMoviesProvider>
+      <SavedMoviesProvider>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="movies/[id]" />
+          <Stack.Screen name="login" />
+          <Stack.Screen name="signup" />
+        </Stack>
+      </SavedMoviesProvider>
+    </AuthProvider>
   );
 }

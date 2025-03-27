@@ -1,50 +1,95 @@
-# Welcome to your Expo app 👋
+📽️ NativeMovie
+🎬 A React Native movie app that fetches movie data from an API and displays detailed information in an interactive UI.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+🚀 Features
+✅ Fetches and displays movies from an external API
+✅ Beautiful and responsive UI with smooth navigation
+✅ Movie details page with posters, ratings, and descriptions
+✅ Optimized for both Android & iOS
+✅ Modern React Native best practices
 
-## Get started
+📸 Screenshots
+Home Screen Movie Details
+📦 Installation
+1️⃣ Clone this repository:
 
-1. Install dependencies
+sh
+Copy
+Edit
+git clone https://github.com/YznAlqadery/NativeMovie.git
+cd NativeMovie
+2️⃣ Install dependencies:
 
-   ```bash
-   npm install
-   ```
+sh
+Copy
+Edit
+npm install # or yarn install
+3️⃣ Start the development server:
 
-2. Start the app
+sh
+Copy
+Edit
+npx expo start # For Expo
+or
 
-   ```bash
-    npx expo start
-   ```
+sh
+Copy
+Edit
+npx react-native run-android # For Android  
+npx react-native run-ios # For iOS  
+🔗 API Used
+This app fetches movie data from TMDB API.
+To use this API, sign up on TMDB, generate an API key, and update the code:
 
-In the output, you'll find options to open the app in a
+js
+Copy
+Edit
+const API_KEY = "your_api_key_here";
+🛠️ Tech Stack
+React Native
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Expo (if used)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Axios for API requests
 
-## Get a fresh project
+React Navigation for smooth navigation
 
-When you're ready, run:
+AsyncStorage (if used for caching)
 
-```bash
-npm run reset-project
-```
+📝 TODO List
+Add search functionality
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Implement dark mode
 
-## Learn more
+Optimize API requests with caching
 
-To learn more about developing your project with Expo, look at the following resources:
+Add user authentication
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+🤝 Contributing
+Fork the repository
 
-## Join the community
+Create a new branch:
 
-Join our community of developers creating universal apps.
+sh
+Copy
+Edit
+git checkout -b feature-name
+Make your changes and commit:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+sh
+Copy
+Edit
+git commit -m "Added a new feature"
+Push to GitHub and open a pull request!
+
+📄 License
+This project is open-source and available under the MIT License.
+
+📧 Contact
+📩 Yazan Alqadery
+
+GitHub: @YznAlqadery
+
+LinkedIn: Your LinkedIn Profile (if available)
+
+⭐ If you like this project, give it a star! ⭐
